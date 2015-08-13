@@ -25,7 +25,12 @@ namespace Spoofi.FreudBot.Logic.Handlers
         {
             try
             {
-                //TODO fix dublicate messages
+                if (Config.BasicCommands.Contains(message.Text))
+                {
+                    HandleCommand(message);
+                    return;
+                }
+
                 if (!CheckPermission(message)) return;
 
                 if (message.IsText())
@@ -55,24 +60,22 @@ namespace Spoofi.FreudBot.Logic.Handlers
             switch (message.Text.Split(' ').First())
             {
                 case "/start":
-                    _bot.SendText(message.Chat.Id, "Привет! Я еще мало что умею, поэтому сильно меня мучить не нужно :)");
+                    _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_start);
                     break;
                 case "/help":
-                    _bot.SendText(message.Chat.Id, string.Format("Доступные команды можно просмотреть, набрав команду /list \n\n" +
-                                                                 "Примечение: чтобы использовать все доступные команды, нужно быть в списке разрешенных пользователей.\n\n" +
-                                                                 "Ваш идентификатор чата {0} - передайте его @spoofi, чтобы внести Вас в список.", message.Chat.Id));
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_help, message.Chat.Id));
                     break;
                 case "/add":
                     _commandHandler.AddCommand(message);
                     break;
                 case "/list":
                     var commands = _commandHandler.GetCommandsByChat(message.Chat.Id).Select(x => x.Command);
-                    _bot.SendText(message.Chat.Id, string.Format("Доступные вам команды:\n{0}", string.Join("\n", commands)));
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_list, string.Join("\n", commands)));
                     break;
                 default:
                     if (_commandHandler.Execute(message))
                         break;
-                    _bot.SendText(message.Chat.Id, "Извините, я не умею выполнять эту команду :(");
+                    _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_unknown_command);
                     break;
             }
         }

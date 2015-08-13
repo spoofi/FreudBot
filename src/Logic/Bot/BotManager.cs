@@ -17,15 +17,5 @@ namespace Spoofi.FreudBot.Logic.Bot
         {
             _result =_bot.SendTextMessage(chatId, text).Result;
         }
-
-        public void RequestData(int chatId, string text, int replyTo)
-        {
-            _result = _bot.SendTextMessage(chatId, text, false, replyTo, new ReplyKeyboardMarkup()
-            {
-                Keyboard = new[] {new []{"/start", "/test"}},
-                OneTimeKeyboard = true,
-                Selective = true
-            }).Result;
-        }
     }
 }

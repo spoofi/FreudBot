@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Configuration;
 
@@ -7,10 +8,16 @@ namespace Spoofi.FreudBot.Logic.Bot
     public static class Config
     {
         private static readonly NameValueCollection Appsettings = ConfigurationManager.AppSettings;
-        
-        public static string BotApiKey { get { return Appsettings["BotApiKey"]; } }
 
-        public static string WebHookUrl { get { return Appsettings["WebHookUrl"]; } }
+        public static string BotApiKey
+        {
+            get { return Appsettings["BotApiKey"]; }
+        }
+
+        public static string WebHookUrl
+        {
+            get { return Appsettings["WebHookUrl"]; }
+        }
 
         public static IEnumerable<int> BotAllowedUsers
         {
@@ -23,6 +30,19 @@ namespace Spoofi.FreudBot.Logic.Bot
                     if (int.TryParse(stringId, out id))
                         yield return id;
                 }
+            }
+        }
+
+        public static string[] BasicCommands
+        {
+            get
+            {
+                return new[]
+                {
+                    "/start",
+                    "/help",
+                    "/settings"
+                };
             }
         }
     }

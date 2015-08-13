@@ -3,6 +3,5 @@
     public interface IBotManager
     {
         void SendText(int chatId, string text);
-        void RequestData(int chatId, string text, int replyTo);
     }
 }
