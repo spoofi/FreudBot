@@ -84,6 +84,15 @@ namespace Spoofi.FreudBot.Logic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to At the moment I don&apos;t have settings. I think my developer will add them soon..
+        /// </summary>
+        internal static string MessageHandler_HandleCommand_settings {
+            get {
+                return ResourceManager.GetString("MessageHandler_HandleCommand_settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Hi!
         ///Brief information about me you can see by using command /help.
         /// </summary>
@@ -94,7 +103,8 @@ namespace Spoofi.FreudBot.Logic {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sorry, but I don&apos;t know this command :(.
+        ///   Looks up a localized string similar to Sorry, but I don&apos;t know this command :(
+        ///Use /list to see list of available commands..
         /// </summary>
         internal static string MessageHandler_HandleCommand_unknown_command {
             get {

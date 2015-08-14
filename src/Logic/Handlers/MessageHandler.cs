@@ -65,11 +65,15 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case "/help":
                     _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_help, message.Chat.Id));
                     break;
+                case "/settings":
+                    _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_settings);
+                    break;
                 case "/add":
                     _commandHandler.AddCommand(message);
                     break;
                 case "/list":
-                    var commands = _commandHandler.GetCommandsByChat(message.Chat.Id).Select(x => x.Command);
+                    var commands = Config.BasicCommands.ToList();
+                    commands.AddRange(_commandHandler.GetCommandsByChat(message.Chat.Id));
                     _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_list, string.Join("\n", commands)));
                     break;
                 default:

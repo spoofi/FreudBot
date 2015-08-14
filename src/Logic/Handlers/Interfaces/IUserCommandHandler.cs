@@ -1,6 +1,5 @@
 using System.Collections.Generic;
-using Spoofi.FreudBot.Data.Entities;
-using Message = Telegram.Bot.Types.Message;
+using Telegram.Bot.Types;
 
 namespace Spoofi.FreudBot.Logic.Handlers.Interfaces
 {
@@ -9,6 +8,6 @@ namespace Spoofi.FreudBot.Logic.Handlers.Interfaces
 
         void AddCommand(Message message);
         bool Execute(Message message);
-        IEnumerable<UserCommand> GetCommandsByChat(int chatId);
+        IEnumerable<string> GetCommandsByChat(int chatId);
     }
 }
