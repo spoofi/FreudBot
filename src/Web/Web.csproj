@@ -159,7 +159,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\DependenciesConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PingController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -182,7 +182,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>

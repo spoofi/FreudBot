@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -9,7 +7,7 @@ using Spoofi.FreudBot.Logic.Bot;
 
 namespace Spoofi.FreudBot.Web
 {
-    public class WebApiApplication : System.Web.HttpApplication
+    public class WebApiApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -19,14 +17,7 @@ namespace Spoofi.FreudBot.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Task.Run(() =>
-            {
-                while (true) // don't sleep
-                {
-                    Bot.Get();
-                    Thread.Sleep(new TimeSpan(0, 9, 0));
-                }
-            });
+            Bot.Get();
         }
     }
 }
