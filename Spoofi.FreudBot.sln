@@ -16,6 +16,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils", "src\Utils\Utils.cs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "src\Data\Data.csproj", "{4A8AFF19-35D4-428A-9470-A4652D5CF08C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{37E7B330-F7BF-47AD-A0E0-2230BAD4D12A}"
+	ProjectSection(SolutionItems) = preProject
+		utils\pingbot.sh = utils\pingbot.sh
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,5 +46,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{37E7B330-F7BF-47AD-A0E0-2230BAD4D12A} = {E70F78E2-1609-4FF0-AA30-AD149CA6FB4F}
 	EndGlobalSection
 EndGlobal
