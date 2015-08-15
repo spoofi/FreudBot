@@ -41,7 +41,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
             }
             catch (Exception exception)
             {
-                _db.SaveError(exception);
+                _db.SaveErrorAsync(exception);
             }
         }
 
@@ -60,6 +60,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
             switch (message.Text.Split(' ').First())
             {
                 case "/start":
+                    if (message.From != null) _db.SaveOrUpdateUserAsync(message.From);
                     _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_start);
                     break;
                 case "/help":

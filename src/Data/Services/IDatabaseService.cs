@@ -8,12 +8,15 @@ namespace Spoofi.FreudBot.Data.Services
     {
         Message SaveMessage(Telegram.Bot.Types.Message telegramMessage, bool isReceived = true);
 
-        void SaveError(Exception exception);
+        void SaveOrUpdateUserAsync(Telegram.Bot.Types.User user);
+
+        void SaveErrorAsync(Exception exception);
 
         UserCommand GetCommandByChat(int chatId, string command);
 
         void SaveUserCommand(UserCommand command);
 
         IEnumerable<UserCommand> GetCommandsByChat(int chatId);
+        
     }
 }

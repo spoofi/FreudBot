@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using MongoRepository;
 using Spoofi.FreudBot.Data.Entities;
 using Spoofi.FreudBot.Data.Mappings;
 using Spoofi.FreudBot.Data.Mongo;
 using TelegramMessage = Telegram.Bot.Types.Message;
+using TelegramUser = Telegram.Bot.Types.User;
 
 namespace Spoofi.FreudBot.Data.Services
 {
@@ -26,11 +30,21 @@ namespace Spoofi.FreudBot.Data.Services
             return message;
         }
 
-        public void SaveError(Exception exception)
+        public void SaveOrUpdateUserAsync(TelegramUser user)
         {
-            var errorRepository = _repositoryFactory.GetRepository<Error>();
-            var error = exception.Convert();
-            errorRepository.Add(error);
+            Task.Run(() =>
+            {
+                var userRepository = _repositoryFactory.GetRepository<User>();
+                if (userRepository.Any(u => u.UserId == user.Id))
+                    userRepository.Update(user.Convert());
+                else
+                    userRepository.Add(user.Convert());
+            });
+        }
+
+        public void SaveErrorAsync(Exception exception)
+        {
+            Task.Run(() => _repositoryFactory.GetRepository<Error>().Add(exception.Convert()));
         }
 
         public IEnumerable<UserCommand> GetCommandsByChat(int chatId)
@@ -48,6 +62,5 @@ namespace Spoofi.FreudBot.Data.Services
         {
             _repositoryFactory.GetRepository<UserCommand>().Add(command);
         }
-
     }
 }

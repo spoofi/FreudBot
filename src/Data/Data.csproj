@@ -81,6 +81,7 @@
     <Compile Include="Entities\UserCommand.cs" />
     <Compile Include="Entities\UserCommandType.cs" />
     <Compile Include="DataDependenciesConfig.cs" />
+    <Compile Include="Mappings\UserConverter.cs" />
     <Compile Include="Mappings\ErrorConverter.cs" />
     <Compile Include="Mappings\MessageConverter.cs" />
     <Compile Include="Mongo\IRepositoryFactory.cs" />
