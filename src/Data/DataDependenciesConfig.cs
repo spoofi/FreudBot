@@ -1,4 +1,5 @@
 ﻿using LightInject;
+using Spoofi.FreudBot.Data.Mongo;
 using Spoofi.FreudBot.Data.Services;
 
 namespace Spoofi.FreudBot.Data
@@ -7,7 +8,8 @@ namespace Spoofi.FreudBot.Data
     {
         public static void Register(ServiceContainer container)
         {
-            container.RegisterAssembly(typeof(IDatabaseService).Assembly);
+            container.Register<IRepositoryFactory, RepositoryFactory>();
+            container.Register<IDatabaseService, DatabaseService>();
         }
     }
 }
