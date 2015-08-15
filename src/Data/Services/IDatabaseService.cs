@@ -8,7 +8,7 @@ namespace Spoofi.FreudBot.Data.Services
     {
         Message SaveMessage(Telegram.Bot.Types.Message telegramMessage, bool isReceived = true);
 
-        void SaveOrUpdateUserAsync(Telegram.Bot.Types.User user);
+        void SaveOrUpdateUserAsync(Telegram.Bot.Types.User telegramUser);
 
         void SaveErrorAsync(Exception exception);
 

@@ -30,15 +30,13 @@ namespace Spoofi.FreudBot.Data.Services
             return message;
         }
 
-        public void SaveOrUpdateUserAsync(TelegramUser user)
+        public void SaveOrUpdateUserAsync(TelegramUser telegramUser)
         {
             Task.Run(() =>
             {
                 var userRepository = _repositoryFactory.GetRepository<User>();
-                if (userRepository.Any(u => u.UserId == user.Id))
-                    userRepository.Update(user.Convert());
-                else
-                    userRepository.Add(user.Convert());
+                var user = userRepository.SingleOrDefault(u => u.UserId == telegramUser.Id);
+                userRepository.Update(user ?? telegramUser.Convert());
             });
         }
 
