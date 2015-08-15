@@ -52,7 +52,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
 
         private void HandleText(Message message)
         {
-            //_bot.SendText(message.Chat.Id, string.Format("Ответ на {0} - {1}", message.MessageId, message.Text));
+            
         }
 
         private void HandleCommand(Message message)

@@ -139,4 +139,19 @@ Use /list to see list of available commands.</value>
   <data name="MessageHandler_HandleCommand_settings" xml:space="preserve">
     <value>At the moment I don't have settings. I think my developer will add them soon.</value>
   </data>
+  <data name="UserCommandHandler_Execute_SuccessRunCommand" xml:space="preserve">
+    <value>Ok, you command successfully running :)</value>
+  </data>
+  <data name="UserCommandHandler_AddCommand_UsingText" xml:space="preserve">
+    <value>Using: 
+
+ /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
+
+Example: /add /ping get http://test.site/api/site/get page|1
+
+Note: at the moment I can't return response of request.</value>
+  </data>
+  <data name="UserCommandHandler_AddCommand_SuccesfullyAddedCommand" xml:space="preserve">
+    <value>Good, from this time you can use {0} command</value>
+  </data>
 </root>

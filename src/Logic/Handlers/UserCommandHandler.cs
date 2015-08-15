@@ -29,11 +29,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case 1:
                 case 2:
                 case 3:
-                    const string newLine = "\n\n";
-                    const string addCommandHelpText = "Использование команды: " + newLine + " /add /commandName [post|get] url ParamName_1|Param_Value_1 ParamName_2|Param_Value_2" + newLine +
-                                                      "Например: /add /ping get http://test.site/api/site/ping page|1" + newLine +
-                                                      "Примечание: пока что я не умею возвращать результаты запроса.";
-                    _bot.SendText(message.Chat.Id, addCommandHelpText);
+                    _bot.SendText(message.Chat.Id, Responses.UserCommandHandler_AddCommand_UsingText);
                     break;
                 default:
                     var newCommand = new UserCommand
@@ -45,7 +41,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                         Data = GetData(text.Skip(4))
                     };
                     _db.SaveUserCommand(newCommand);
-                    _bot.SendText(message.Chat.Id, string.Format("Ок, теперь ты можешь использовать команду {0}", text[1]));
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.UserCommandHandler_AddCommand_SuccesfullyAddedCommand, text[1]));
                     break;
             }
         }
@@ -61,7 +57,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     Execute(userCommand);
                     break;
             }
-            _bot.SendText(message.Chat.Id, "Ок, я выполнил вашу команду :)");
+            _bot.SendText(message.Chat.Id, Responses.UserCommandHandler_Execute_SuccessRunCommand);
             return true;
         }
 

@@ -111,5 +111,38 @@ namespace Spoofi.FreudBot.Logic {
                 return ResourceManager.GetString("MessageHandler_HandleCommand_unknown_command", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Good, from this time you can use {0} command.
+        /// </summary>
+        internal static string UserCommandHandler_AddCommand_SuccesfullyAddedCommand {
+            get {
+                return ResourceManager.GetString("UserCommandHandler_AddCommand_SuccesfullyAddedCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using: 
+        ///
+        /// /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
+        ///
+        ///Example: /add /ping get http://test.site/api/site/get page|1
+        ///
+        ///Note: at the moment I can&apos;t return response of request..
+        /// </summary>
+        internal static string UserCommandHandler_AddCommand_UsingText {
+            get {
+                return ResourceManager.GetString("UserCommandHandler_AddCommand_UsingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ok, you command successfully running :).
+        /// </summary>
+        internal static string UserCommandHandler_Execute_SuccessRunCommand {
+            get {
+                return ResourceManager.GetString("UserCommandHandler_Execute_SuccessRunCommand", resourceCulture);
+            }
+        }
     }
 }
