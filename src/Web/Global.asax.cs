@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -17,7 +19,14 @@ namespace Spoofi.FreudBot.Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Task.Run(() => Bot.Get());
+            Task.Run(() =>
+            {
+                while (true) // don't sleep
+                {
+                    Bot.Get();
+                    Thread.Sleep(new TimeSpan(0, 9, 0));
+                }
+            });
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Threading.Tasks;
+using System.Web.Http;
 using System.Web.Http.Results;
 using Spoofi.FreudBot.Logic.Handlers.Interfaces;
 using Telegram.Bot.Types;
@@ -17,7 +18,7 @@ namespace Spoofi.FreudBot.Web.Controllers
         [Route(@"api/message/freud")]
         public OkResult Post([FromBody]Update value)
         {
-            _handler.Handle(value.Message);
+            Task.Run(() => _handler.Handle(value.Message));
             return Ok();
         }
     }

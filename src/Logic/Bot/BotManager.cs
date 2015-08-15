@@ -13,9 +13,9 @@ namespace Spoofi.FreudBot.Logic.Bot
             _bot = Bot.Get();
         }
 
-        public void SendText(int chatId, string text)
+        public async void SendText(int chatId, string text)
         {
-            _result =_bot.SendTextMessage(chatId, text).Result;
+            _result = await _bot.SendTextMessage(chatId, text);
         }
     }
 }
