@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
-using Spoofi.FreudBot.Logic.Handlers.Interfaces;
+using Spoofi.FreudBot.Logic.Interfaces;
 using Telegram.Bot.Types;
 
 namespace Spoofi.FreudBot.Web.Controllers

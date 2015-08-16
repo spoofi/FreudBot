@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using Spoofi.FreudBot.Logic.Interfaces;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 
 namespace Spoofi.FreudBot.Logic.Bot

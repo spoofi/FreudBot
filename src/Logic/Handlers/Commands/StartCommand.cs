@@ -1,6 +1,6 @@
 ﻿using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Bot;
-using Spoofi.FreudBot.Logic.Handlers.Interfaces;
+using Spoofi.FreudBot.Logic.Interfaces;
 using Telegram.Bot.Types;
 
 namespace Spoofi.FreudBot.Logic.Handlers.Commands

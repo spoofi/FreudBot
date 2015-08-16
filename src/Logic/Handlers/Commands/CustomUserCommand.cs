@@ -3,7 +3,7 @@ using RestSharp;
 using Spoofi.FreudBot.Data.Entities;
 using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Bot;
-using Spoofi.FreudBot.Logic.Handlers.Interfaces;
+using Spoofi.FreudBot.Logic.Interfaces;
 using Message = Telegram.Bot.Types.Message;
 
 namespace Spoofi.FreudBot.Logic.Handlers.Commands

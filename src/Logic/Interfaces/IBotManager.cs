@@ -1,4 +1,4 @@
-﻿namespace Spoofi.FreudBot.Logic.Bot
+﻿namespace Spoofi.FreudBot.Logic.Interfaces
 {
     public interface IBotManager
     {

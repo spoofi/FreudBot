@@ -1,5 +1,6 @@
 using System.Linq;
 using Spoofi.FreudBot.Data.Services;
+using Spoofi.FreudBot.Logic.Interfaces;
 
 namespace Spoofi.FreudBot.Logic.Bot
 {

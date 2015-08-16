@@ -1,6 +1,6 @@
 using Telegram.Bot.Types;
 
-namespace Spoofi.FreudBot.Logic.Handlers.Interfaces
+namespace Spoofi.FreudBot.Logic.Interfaces
 {
     public interface IMessageHandler
     {

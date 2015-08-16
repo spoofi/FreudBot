@@ -3,7 +3,7 @@ using System.Linq;
 using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Bot;
 using Spoofi.FreudBot.Logic.Handlers.Commands;
-using Spoofi.FreudBot.Logic.Handlers.Interfaces;
+using Spoofi.FreudBot.Logic.Interfaces;
 using Spoofi.FreudBot.Utils.Extensions;
 using Telegram.Bot.Types;
 

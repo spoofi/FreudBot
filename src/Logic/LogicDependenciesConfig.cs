@@ -2,7 +2,7 @@
 using Spoofi.FreudBot.Data;
 using Spoofi.FreudBot.Logic.Bot;
 using Spoofi.FreudBot.Logic.Handlers;
-using Spoofi.FreudBot.Logic.Handlers.Interfaces;
+using Spoofi.FreudBot.Logic.Interfaces;
 
 namespace Spoofi.FreudBot.Logic
 {
