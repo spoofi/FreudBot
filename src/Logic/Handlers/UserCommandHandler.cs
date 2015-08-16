@@ -14,11 +14,13 @@ namespace Spoofi.FreudBot.Logic.Handlers
     {
         private readonly IDatabaseService _db;
         private readonly IBotManager _bot;
+        private readonly IPermissionChecker _permissionChecker;
 
-        public UserCommandHandler(IDatabaseService databaseService, IBotManager botManager)
+        public UserCommandHandler(IDatabaseService databaseService, IBotManager botManager, IPermissionChecker permissionChecker)
         {
             _db = databaseService;
             _bot = botManager;
+            _permissionChecker = permissionChecker;
         }
 
         public void AddCommand(Message message)
@@ -64,7 +66,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
         public IEnumerable<string> GetCommandsByChat(int chatId)
         {
             var commands = _db.GetCommandsByChat(chatId).Select(x => x.Command).ToList();
-            if (_db.GetAllowedUsers().Any(u => u.UserId == chatId))
+            if (_permissionChecker.Check(chatId))
                 commands.Insert(0, "/add");
             return commands;
         }

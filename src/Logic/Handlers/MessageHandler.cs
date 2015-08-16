@@ -13,12 +13,14 @@ namespace Spoofi.FreudBot.Logic.Handlers
         private readonly IBotManager _bot;
         private readonly IDatabaseService _db;
         private readonly IUserCommandHandler _commandHandler;
+        private readonly IPermissionChecker _permissionChecker;
 
-        public MessageHandler(IDatabaseService databaseService, IBotManager botManager, IUserCommandHandler commandHandler)
+        public MessageHandler(IDatabaseService databaseService, IBotManager botManager, IUserCommandHandler commandHandler, IPermissionChecker permissionChecker)
         {
             _bot = botManager;
             _db = databaseService;
             _commandHandler = commandHandler;
+            _permissionChecker = permissionChecker;
         }
 
         public void Handle(Message message)
@@ -31,7 +33,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     return;
                 }
 
-                if (!CheckPermission(message)) return;
+                if (!_permissionChecker.Check(message.Chat.Id)) return;
 
                 if (message.IsText())
                     HandleText(message);
@@ -43,11 +45,6 @@ namespace Spoofi.FreudBot.Logic.Handlers
             {
                 _db.SaveErrorAsync(exception);
             }
-        }
-
-        private bool CheckPermission(Message message)
-        {
-            return _db.GetAllowedUsers().Select(u => u.UserId).Contains(message.Chat.Id) || Config.BotAdmins.Contains(message.Chat.Id);
         }
 
         private void HandleText(Message message)

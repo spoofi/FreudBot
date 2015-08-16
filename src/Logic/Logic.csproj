@@ -79,6 +79,8 @@
     <Compile Include="Bot\BotManager.cs" />
     <Compile Include="Bot\Config.cs" />
     <Compile Include="Bot\IBotManager.cs" />
+    <Compile Include="Bot\IPermissionChecker.cs" />
+    <Compile Include="Bot\PermissionChecker.cs" />
     <Compile Include="Handlers\Interfaces\IUserCommandHandler.cs" />
     <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="Handlers\Interfaces\IMessageHandler.cs" />

@@ -13,6 +13,7 @@ namespace Spoofi.FreudBot.Logic
             container.Register<IBotManager, BotManager>();
             container.Register<IMessageHandler, MessageHandler>();
             container.Register<IUserCommandHandler, UserCommandHandler>();
+            container.Register<IPermissionChecker, PermissionChecker>();
             DataDependenciesConfig.Register(container);
         }
     }
