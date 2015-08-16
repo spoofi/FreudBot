@@ -40,7 +40,8 @@ namespace Spoofi.FreudBot.Logic.Bot
                 {
                     "/start",
                     "/help",
-                    "/settings"
+                    "/settings",
+                    "/list"
                 };
             }
         }

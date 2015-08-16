@@ -121,7 +121,7 @@
     <value>Hi!
 Brief information about me you can see by using command /help</value>
   </data>
-  <data name="MessageHandler_HandleCommand_help" xml:space="preserve">
+  <data name="HelpText" xml:space="preserve">
     <value>List of available commands (for you): /list
 
 Note: for using all of available commands, you must be in a list of allowed users.
@@ -153,5 +153,11 @@ Note: at the moment I can't return response of request.</value>
   </data>
   <data name="UserCommandHandler_AddCommand_SuccesfullyAddedCommand" xml:space="preserve">
     <value>Good, from this time you can use {0} command</value>
+  </data>
+  <data name="HelpTextForAllowed" xml:space="preserve">
+    <value>List of available commands (for you): /list
+
+Developer: @spoofi
+GitHub: https://github.com/spoofi/FreudBot</value>
   </data>
 </root>

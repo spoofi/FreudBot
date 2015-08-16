@@ -67,9 +67,21 @@ namespace Spoofi.FreudBot.Logic {
         ///
         ///Your&apos;s chat identifier is {0}. Send it to @spoofi, if you want to use all my commands..
         /// </summary>
-        internal static string MessageHandler_HandleCommand_help {
+        internal static string HelpText {
             get {
-                return ResourceManager.GetString("MessageHandler_HandleCommand_help", resourceCulture);
+                return ResourceManager.GetString("HelpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List of available commands (for you): /list
+        ///
+        ///Developer: @spoofi
+        ///GitHub: https://github.com/spoofi/FreudBot.
+        /// </summary>
+        internal static string HelpTextForAllowed {
+            get {
+                return ResourceManager.GetString("HelpTextForAllowed", resourceCulture);
             }
         }
         

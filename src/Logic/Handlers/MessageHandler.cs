@@ -61,7 +61,12 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_start);
                     break;
                 case "/help":
-                    _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_help, message.Chat.Id));
+                    if (_permissionChecker.Check(message.Chat.Id))
+                    {
+                        _bot.SendText(message.Chat.Id, Responses.HelpTextForAllowed);
+                        break;
+                    }
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.HelpText, message.Chat.Id));
                     break;
                 case "/settings":
                     _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_settings);
@@ -72,7 +77,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case "/list":
                     var commands = Config.BasicCommands.ToList();
                     commands.AddRange(_commandHandler.GetCommandsByChat(message.Chat.Id));
-                    _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_list, string.Join("\n", commands)));
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_list, string.Join("\r\n", commands)));
                     break;
                 default:
                     if (_commandHandler.Execute(message))
