@@ -2,6 +2,7 @@
 using System.Linq;
 using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Bot;
+using Spoofi.FreudBot.Logic.Handlers.Commands;
 using Spoofi.FreudBot.Logic.Handlers.Interfaces;
 using Spoofi.FreudBot.Utils.Extensions;
 using Telegram.Bot.Types;
@@ -12,14 +13,12 @@ namespace Spoofi.FreudBot.Logic.Handlers
     {
         private readonly IBotManager _bot;
         private readonly IDatabaseService _db;
-        private readonly IUserCommandHandler _commandHandler;
         private readonly IPermissionChecker _permissionChecker;
 
-        public MessageHandler(IDatabaseService databaseService, IBotManager botManager, IUserCommandHandler commandHandler, IPermissionChecker permissionChecker)
+        public MessageHandler(IDatabaseService databaseService, IBotManager botManager, IPermissionChecker permissionChecker)
         {
             _bot = botManager;
             _db = databaseService;
-            _commandHandler = commandHandler;
             _permissionChecker = permissionChecker;
         }
 
@@ -54,37 +53,20 @@ namespace Spoofi.FreudBot.Logic.Handlers
 
         private void HandleCommand(Message message)
         {
+            ICommandStrategy strategy = null;
             switch (message.Text.Split(' ').First())
             {
-                case "/start":
-                    if (message.From != null) _db.SaveOrUpdateUserAsync(message.From);
-                    _bot.SendText(message.Chat.Id, Responses.StartText);
-                    break;
-                case "/help":
-                    if (_permissionChecker.Check(message.Chat.Id))
-                    {
-                        _bot.SendText(message.Chat.Id, Responses.HelpTextForAllowed);
-                        break;
-                    }
-                    _bot.SendText(message.Chat.Id, string.Format(Responses.HelpText, message.Chat.Id));
-                    break;
-                case "/settings":
-                    _bot.SendText(message.Chat.Id, Responses.SettingsText);
-                    break;
-                case "/add":
-                    _commandHandler.AddCommand(message);
-                    break;
-                case "/list":
-                    var commands = Config.BasicCommands.ToList();
-                    commands.AddRange(_commandHandler.GetCommandsByChat(message.Chat.Id));
-                    _bot.SendText(message.Chat.Id, string.Format(Responses.ListText, string.Join("\r\n", commands)));
-                    break;
+                case "/start": strategy = new StartCommand(_db, _bot); break;
+                case "/help": strategy = new HelpCommand(_permissionChecker, _bot); break;
+                case "/settings": strategy = new SettingsCommand(_bot); break;
+                case "/add": strategy = new AddCommand(_bot, _db); break;
+                case "/list": strategy = new ListCommand(_bot, _db, _permissionChecker); break;
                 default:
-                    if (_commandHandler.Execute(message))
-                        break;
-                    _bot.SendText(message.Chat.Id, Responses.UnknownCommandText);
+                    if (_db.GetCommandByChat(message.Chat.Id, message.Text) != null)
+                        strategy = new CustomUserCommand(_db, _bot);
                     break;
             }
+            new CommandContext(strategy ?? new UnknownCommand(_bot)).Execute(message);
         }
     }
 }
