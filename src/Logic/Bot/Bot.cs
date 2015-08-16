@@ -15,8 +15,8 @@ namespace Spoofi.FreudBot.Logic.Bot
             _bot = new Api(Config.BotApiKey);
             _bot.SetWebhook(Config.WebHookUrl);
 
-            if (Config.BotAllowedUsers.Any())
-                StartedAtUtc = _bot.SendTextMessage(Config.BotAllowedUsers.First(), "I'm initialized and ready for work!").Result.Date.ToUniversalTime();
+            if (Config.BotAdmins.Any())
+                StartedAtUtc = _bot.SendTextMessage(Config.BotAdmins.First(), "I'm initialized and ready for work!").Result.Date.ToUniversalTime();
 
             return _bot;
         }

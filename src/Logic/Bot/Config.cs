@@ -18,11 +18,11 @@ namespace Spoofi.FreudBot.Logic.Bot
             get { return Appsettings["WebHookUrl"]; }
         }
 
-        public static IEnumerable<int> BotAllowedUsers
+        public static IEnumerable<int> BotAdmins
         {
             get
             {
-                var stringArray = Appsettings["BotAllowedUsers"].Split(',');
+                var stringArray = Appsettings["BotAdmins"].Split(',');
                 foreach (var stringId in stringArray)
                 {
                     int id;

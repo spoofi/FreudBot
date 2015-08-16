@@ -17,6 +17,7 @@ namespace Spoofi.FreudBot.Data.Services
         void SaveUserCommand(UserCommand command);
 
         IEnumerable<UserCommand> GetCommandsByChat(int chatId);
-        
+
+        IEnumerable<User> GetAllowedUsers();
     }
 }

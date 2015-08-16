@@ -64,7 +64,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
         public IEnumerable<string> GetCommandsByChat(int chatId)
         {
             var commands = _db.GetCommandsByChat(chatId).Select(x => x.Command).ToList();
-            if (Config.BotAllowedUsers.Contains(chatId))
+            if (_db.GetAllowedUsers().Any(u => u.UserId == chatId))
                 commands.Insert(0, "/add");
             return commands;
         }

@@ -12,5 +12,7 @@ namespace Spoofi.FreudBot.Data.Entities
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public bool IsAllowed { get; set; }
     }
 }

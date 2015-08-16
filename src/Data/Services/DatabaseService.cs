@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
-using MongoRepository;
 using Spoofi.FreudBot.Data.Entities;
 using Spoofi.FreudBot.Data.Mappings;
 using Spoofi.FreudBot.Data.Mongo;
@@ -49,6 +47,16 @@ namespace Spoofi.FreudBot.Data.Services
         {
             return _repositoryFactory.GetRepository<UserCommand>()
                 .Where(x => x.ChatId == chatId);
+        }
+
+        private IQueryable<User> GetUsers()
+        {
+            return _repositoryFactory.GetRepository<User>();
+        }
+
+        public IEnumerable<User> GetAllowedUsers()
+        {
+            return GetUsers().Where(u => u.IsAllowed);
         }
 
         public UserCommand GetCommandByChat(int chatId, string command)

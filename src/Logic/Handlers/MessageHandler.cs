@@ -45,9 +45,9 @@ namespace Spoofi.FreudBot.Logic.Handlers
             }
         }
 
-        private static bool CheckPermission(Message message)
+        private bool CheckPermission(Message message)
         {
-            return Config.BotAllowedUsers.Contains(message.Chat.Id);
+            return _db.GetAllowedUsers().Select(u => u.UserId).Contains(message.Chat.Id) || Config.BotAdmins.Contains(message.Chat.Id);
         }
 
         private void HandleText(Message message)
