@@ -45,5 +45,18 @@ namespace Spoofi.FreudBot.Logic.Bot
                 };
             }
         }
+
+        public static string[] AdminCommands
+        {
+            get
+            {
+                return new[]
+                {
+                    "/admin",
+                    "/allowuser",
+                    "/disallowuser"
+                };
+            }
+        }
     }
 }
