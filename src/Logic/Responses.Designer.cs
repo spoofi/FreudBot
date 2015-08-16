@@ -70,7 +70,7 @@ namespace Spoofi.FreudBot.Logic {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Using: 
+        ///   Looks up a localized string similar to Usage: 
         ///
         /// /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
         ///
@@ -78,9 +78,75 @@ namespace Spoofi.FreudBot.Logic {
         ///
         ///Note: at the moment I can&apos;t return response of request..
         /// </summary>
-        internal static string AddCommandUsingText {
+        internal static string AddCommandUsageText {
             get {
-                return ResourceManager.GetString("AddCommandUsingText", resourceCulture);
+                return ResourceManager.GetString("AddCommandUsageText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Admin commands:
+        ///{0}.
+        /// </summary>
+        internal static string AdminText {
+            get {
+                return ResourceManager.GetString("AdminText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You was added to my allowed users list..
+        /// </summary>
+        internal static string AllowUserCommandCongratulation {
+            get {
+                return ResourceManager.GetString("AllowUserCommandCongratulation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} now is allowed user.
+        /// </summary>
+        internal static string AllowUserCommandSuccessAllowUser {
+            get {
+                return ResourceManager.GetString("AllowUserCommandSuccessAllowUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage:
+        ////allowuser [id|@username].
+        /// </summary>
+        internal static string AllowUserCommandUsage {
+            get {
+                return ResourceManager.GetString("AllowUserCommandUsage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oops, you are was deleted from my allowed list :(.
+        /// </summary>
+        internal static string DisallowUserCommandMessageToUser {
+            get {
+                return ResourceManager.GetString("DisallowUserCommandMessageToUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} now is disallowed user.
+        /// </summary>
+        internal static string DisallowUserCommandSuccess {
+            get {
+                return ResourceManager.GetString("DisallowUserCommandSuccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage:
+        ////disallowuser [id|@username].
+        /// </summary>
+        internal static string DisallowUserCommandUsage {
+            get {
+                return ResourceManager.GetString("DisallowUserCommandUsage", resourceCulture);
             }
         }
         
@@ -154,6 +220,15 @@ namespace Spoofi.FreudBot.Logic {
         internal static string UserCommandSuccessRun {
             get {
                 return ResourceManager.GetString("UserCommandSuccessRun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User not found.
+        /// </summary>
+        internal static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

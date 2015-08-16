@@ -1,4 +1,5 @@
-﻿using Telegram.Bot.Types;
+﻿using System.Linq;
+using Telegram.Bot.Types;
 
 namespace Spoofi.FreudBot.Utils.Extensions
 {
@@ -12,6 +13,11 @@ namespace Spoofi.FreudBot.Utils.Extensions
         public static bool IsCommand(this Message message)
         {
             return message.Text.HasValue() && message.Text[0] == '/';
+        }
+
+        public static string GetCommand(this Message message)
+        {
+            return message.Text.Split(' ').First();
         }
     }
 }

@@ -142,8 +142,8 @@ Use /list to see list of available commands.</value>
   <data name="UserCommandSuccessRun" xml:space="preserve">
     <value>Ok, you command successfully running :)</value>
   </data>
-  <data name="AddCommandUsingText" xml:space="preserve">
-    <value>Using: 
+  <data name="AddCommandUsageText" xml:space="preserve">
+    <value>Usage: 
 
  /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
 
@@ -159,5 +159,32 @@ Note: at the moment I can't return response of request.</value>
 
 Developer: @spoofi
 GitHub: https://github.com/spoofi/FreudBot</value>
+  </data>
+  <data name="AdminText" xml:space="preserve">
+    <value>Admin commands:
+{0}</value>
+  </data>
+  <data name="AllowUserCommandUsage" xml:space="preserve">
+    <value>Usage:
+/allowuser [id|@username]</value>
+  </data>
+  <data name="AllowUserCommandCongratulation" xml:space="preserve">
+    <value>Congratulations! You was added to my allowed users list.</value>
+  </data>
+  <data name="AllowUserCommandSuccessAllowUser" xml:space="preserve">
+    <value>{0} now is allowed user</value>
+  </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>User not found</value>
+  </data>
+  <data name="DisallowUserCommandUsage" xml:space="preserve">
+    <value>Usage:
+/disallowuser [id|@username]</value>
+  </data>
+  <data name="DisallowUserCommandSuccess" xml:space="preserve">
+    <value>{0} now is disallowed user</value>
+  </data>
+  <data name="DisallowUserCommandMessageToUser" xml:space="preserve">
+    <value>Oops, you are was deleted from my allowed list :(</value>
   </data>
 </root>

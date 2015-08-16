@@ -1,4 +1,5 @@
 ﻿using MongoRepository;
+using Spoofi.FreudBot.Utils.Extensions;
 
 namespace Spoofi.FreudBot.Data.Entities
 {
@@ -14,5 +15,15 @@ namespace Spoofi.FreudBot.Data.Entities
         public string LastName { get; set; }
 
         public bool IsAllowed { get; set; }
+
+        public string GetUsername()
+        {
+            return UserName.HasValue() ? UserName : string.Format("{0} {1}", FirstName, LastName);
+        }
+
+        public string GetUsernameWithId()
+        {
+            return string.Format("{0} ({1})", GetUsername(), UserId);
+        }
     }
 }

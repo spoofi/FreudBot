@@ -32,31 +32,19 @@ namespace Spoofi.FreudBot.Logic.Bot
             }
         }
 
-        public static string[] BasicCommands
+        public static string[] BasicCommands =
         {
-            get
-            {
-                return new[]
-                {
-                    "/start",
-                    "/help",
-                    "/settings",
-                    "/list"
-                };
-            }
-        }
+            "/start",
+            "/help",
+            "/settings",
+            "/list"
+        };
 
-        public static string[] AdminCommands
+        public static string[] AdminCommands =
         {
-            get
-            {
-                return new[]
-                {
-                    "/admin",
-                    "/allowuser",
-                    "/disallowuser"
-                };
-            }
-        }
+            "/admin",
+            "/allowuser",
+            "/disallowuser"
+        };
     }
 }

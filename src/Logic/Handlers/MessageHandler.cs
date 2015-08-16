@@ -3,6 +3,7 @@ using System.Linq;
 using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Bot;
 using Spoofi.FreudBot.Logic.Handlers.Commands;
+using Spoofi.FreudBot.Logic.Handlers.Commands.Admin;
 using Spoofi.FreudBot.Logic.Interfaces;
 using Spoofi.FreudBot.Utils.Extensions;
 using Telegram.Bot.Types;
@@ -54,7 +55,8 @@ namespace Spoofi.FreudBot.Logic.Handlers
         private void HandleCommand(Message message)
         {
             ICommandStrategy strategy = null;
-            switch (message.Text.Split(' ').First())
+            var command = message.GetCommand();
+            switch (command)
             {
                 case "/start": strategy = new StartCommand(_db.Value, _bot.Value); break;
                 case "/help": strategy = new HelpCommand(_permissionChecker.Value, _bot.Value); break;
@@ -62,6 +64,17 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case "/add": strategy = new AddCommand(_bot.Value, _db.Value); break;
                 case "/list": strategy = new ListCommand(_bot.Value, _db.Value, _permissionChecker.Value); break;
                 default:
+                    if (Config.BotAdmins.Contains(message.Chat.Id) && Config.AdminCommands.Contains(command))
+                    {
+                        switch (command)
+                        {
+                            case "/admin": strategy = new AdminCommand(_bot.Value); break;
+                            case "/allowuser": strategy = new AllowUserCommand(_bot.Value, _db); break;
+                            case "/disallowuser": strategy = new DisallowUserCommand(_bot.Value, _db); break;
+                        }
+                        break;
+                    }
+
                     if (_db.Value.GetCommandByChat(message.Chat.Id, message.Text) != null)
                         strategy = new CustomUserCommand(_db.Value, _bot.Value);
                     break;

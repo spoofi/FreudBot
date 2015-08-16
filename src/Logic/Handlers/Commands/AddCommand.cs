@@ -21,13 +21,13 @@ namespace Spoofi.FreudBot.Logic.Handlers.Commands
 
         public void Execute(Message message)
         {
-            var text = message.Text.Split(' ').ToList();
+            var text = message.Text.Split(' ');
             switch (text.Count())
             {
                 case 1:
                 case 2:
                 case 3:
-                    _bot.SendText(message.Chat.Id, Responses.AddCommandUsingText);
+                    _bot.SendText(message.Chat.Id, Responses.AddCommandUsageText);
                     break;
                 default:
                     var newCommand = new UserCommand

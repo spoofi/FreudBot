@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MongoRepository;
 using Spoofi.FreudBot.Data.Entities;
 using Spoofi.FreudBot.Data.Mappings;
 using Spoofi.FreudBot.Data.Mongo;
@@ -13,10 +14,12 @@ namespace Spoofi.FreudBot.Data.Services
     public class DatabaseService : IDatabaseService
     {
         private readonly IRepositoryFactory _repositoryFactory;
-        
+        private readonly MongoRepository<User> _userRepository;
+
         public DatabaseService(IRepositoryFactory repositoryFactory)
         {
             _repositoryFactory = repositoryFactory;
+            _userRepository = _repositoryFactory.GetRepository<User>();
         }
 
         public Message SaveMessage(TelegramMessage telegramMessage, bool isReceived = true)
@@ -32,7 +35,7 @@ namespace Spoofi.FreudBot.Data.Services
         {
             Task.Run(() =>
             {
-                var userRepository = _repositoryFactory.GetRepository<User>();
+                var userRepository = _userRepository;
                 var user = userRepository.SingleOrDefault(u => u.UserId == telegramUser.Id);
                 userRepository.Update(user ?? telegramUser.Convert());
             });
@@ -49,14 +52,53 @@ namespace Spoofi.FreudBot.Data.Services
                 .Where(x => x.ChatId == chatId);
         }
 
-        private IQueryable<User> GetUsers()
+        private User GetUserByUserId(int userId)
         {
-            return _repositoryFactory.GetRepository<User>();
+            return _userRepository.SingleOrDefault(u => u.UserId == userId);
+        }
+
+        private User GetUserByUsername(string username)
+        {
+            return _userRepository.SingleOrDefault(u => u.UserName == username);
         }
 
         public IEnumerable<User> GetAllowedUsers()
         {
-            return GetUsers().Where(u => u.IsAllowed);
+            return _userRepository.Where(u => u.IsAllowed);
+        }
+
+        private User UserAllow(User user)
+        {
+            if (user == null) return null;
+            user.IsAllowed = true;
+            return _userRepository.Update(user);
+        }
+
+        public User UserAllow(int userId)
+        {
+            return UserAllow(GetUserByUserId(userId));
+        }
+
+        public User UserAllow(string username)
+        {
+            return UserAllow(GetUserByUsername(username));
+        }
+
+        private User UserDisallow(User user)
+        {
+            if (user == null) return null;
+            user.IsAllowed = false;
+            return _userRepository.Update(user);
+        }
+
+        public User UserDisallow(int userId)
+        {
+            return UserDisallow(GetUserByUserId(userId));
+        }
+
+        public User UserDisallow(string username)
+        {
+            return UserDisallow(GetUserByUsername(username));
         }
 
         public UserCommand GetCommandByChat(int chatId, string command)
