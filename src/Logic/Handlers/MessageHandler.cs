@@ -11,11 +11,11 @@ namespace Spoofi.FreudBot.Logic.Handlers
 {
     public class MessageHandler : IMessageHandler
     {
-        private readonly IBotManager _bot;
-        private readonly IDatabaseService _db;
-        private readonly IPermissionChecker _permissionChecker;
+        private readonly Lazy<IBotManager> _bot;
+        private readonly Lazy<IDatabaseService> _db;
+        private readonly Lazy<IPermissionChecker> _permissionChecker;
 
-        public MessageHandler(IDatabaseService databaseService, IBotManager botManager, IPermissionChecker permissionChecker)
+        public MessageHandler(Lazy<IDatabaseService> databaseService, Lazy<IBotManager> botManager, Lazy<IPermissionChecker> permissionChecker)
         {
             _bot = botManager;
             _db = databaseService;
@@ -32,7 +32,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     return;
                 }
 
-                if (!_permissionChecker.Check(message.Chat.Id)) return;
+                if (!_permissionChecker.Value.Check(message.Chat.Id)) return;
 
                 if (message.IsText())
                     HandleText(message);
@@ -42,7 +42,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
             }
             catch (Exception exception)
             {
-                _db.SaveErrorAsync(exception);
+                _db.Value.SaveErrorAsync(exception);
             }
         }
 
@@ -56,17 +56,17 @@ namespace Spoofi.FreudBot.Logic.Handlers
             ICommandStrategy strategy = null;
             switch (message.Text.Split(' ').First())
             {
-                case "/start": strategy = new StartCommand(_db, _bot); break;
-                case "/help": strategy = new HelpCommand(_permissionChecker, _bot); break;
-                case "/settings": strategy = new SettingsCommand(_bot); break;
-                case "/add": strategy = new AddCommand(_bot, _db); break;
-                case "/list": strategy = new ListCommand(_bot, _db, _permissionChecker); break;
+                case "/start": strategy = new StartCommand(_db.Value, _bot.Value); break;
+                case "/help": strategy = new HelpCommand(_permissionChecker.Value, _bot.Value); break;
+                case "/settings": strategy = new SettingsCommand(_bot.Value); break;
+                case "/add": strategy = new AddCommand(_bot.Value, _db.Value); break;
+                case "/list": strategy = new ListCommand(_bot.Value, _db.Value, _permissionChecker.Value); break;
                 default:
-                    if (_db.GetCommandByChat(message.Chat.Id, message.Text) != null)
-                        strategy = new CustomUserCommand(_db, _bot);
+                    if (_db.Value.GetCommandByChat(message.Chat.Id, message.Text) != null)
+                        strategy = new CustomUserCommand(_db.Value, _bot.Value);
                     break;
             }
-            new CommandContext(strategy ?? new UnknownCommand(_bot)).Execute(message);
+            new CommandContext(strategy ?? new UnknownCommand(_bot.Value)).Execute(message);
         }
     }
 }
