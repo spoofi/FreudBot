@@ -58,7 +58,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
             {
                 case "/start":
                     if (message.From != null) _db.SaveOrUpdateUserAsync(message.From);
-                    _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_start);
+                    _bot.SendText(message.Chat.Id, Responses.StartText);
                     break;
                 case "/help":
                     if (_permissionChecker.Check(message.Chat.Id))
@@ -69,7 +69,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     _bot.SendText(message.Chat.Id, string.Format(Responses.HelpText, message.Chat.Id));
                     break;
                 case "/settings":
-                    _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_settings);
+                    _bot.SendText(message.Chat.Id, Responses.SettingsText);
                     break;
                 case "/add":
                     _commandHandler.AddCommand(message);
@@ -77,12 +77,12 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case "/list":
                     var commands = Config.BasicCommands.ToList();
                     commands.AddRange(_commandHandler.GetCommandsByChat(message.Chat.Id));
-                    _bot.SendText(message.Chat.Id, string.Format(Responses.MessageHandler_HandleCommand_list, string.Join("\r\n", commands)));
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.ListText, string.Join("\r\n", commands)));
                     break;
                 default:
                     if (_commandHandler.Execute(message))
                         break;
-                    _bot.SendText(message.Chat.Id, Responses.MessageHandler_HandleCommand_unknown_command);
+                    _bot.SendText(message.Chat.Id, Responses.UnknownCommandText);
                     break;
             }
         }

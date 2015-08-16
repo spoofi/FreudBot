@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="MessageHandler_HandleCommand_start" xml:space="preserve">
+  <data name="StartText" xml:space="preserve">
     <value>Hi!
 Brief information about me you can see by using command /help</value>
   </data>
@@ -128,21 +128,21 @@ Note: for using all of available commands, you must be in a list of allowed user
 
 Your's chat identifier is {0}. Send it to @spoofi, if you want to use all my commands.</value>
   </data>
-  <data name="MessageHandler_HandleCommand_list" xml:space="preserve">
+  <data name="ListText" xml:space="preserve">
     <value>Available commands:
 {0}</value>
   </data>
-  <data name="MessageHandler_HandleCommand_unknown_command" xml:space="preserve">
+  <data name="UnknownCommandText" xml:space="preserve">
     <value>Sorry, but I don't know this command :(
 Use /list to see list of available commands.</value>
   </data>
-  <data name="MessageHandler_HandleCommand_settings" xml:space="preserve">
+  <data name="SettingsText" xml:space="preserve">
     <value>At the moment I don't have settings. I think my developer will add them soon.</value>
   </data>
-  <data name="UserCommandHandler_Execute_SuccessRunCommand" xml:space="preserve">
+  <data name="UserCommandSuccessRun" xml:space="preserve">
     <value>Ok, you command successfully running :)</value>
   </data>
-  <data name="UserCommandHandler_AddCommand_UsingText" xml:space="preserve">
+  <data name="AddCommandUsingText" xml:space="preserve">
     <value>Using: 
 
  /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
@@ -151,7 +151,7 @@ Example: /add /ping get http://test.site/api/site/get page|1
 
 Note: at the moment I can't return response of request.</value>
   </data>
-  <data name="UserCommandHandler_AddCommand_SuccesfullyAddedCommand" xml:space="preserve">
+  <data name="AddCommandSuccesfullyAddedCommand" xml:space="preserve">
     <value>Good, from this time you can use {0} command</value>
   </data>
   <data name="HelpTextForAllowed" xml:space="preserve">

@@ -31,7 +31,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case 1:
                 case 2:
                 case 3:
-                    _bot.SendText(message.Chat.Id, Responses.UserCommandHandler_AddCommand_UsingText);
+                    _bot.SendText(message.Chat.Id, Responses.AddCommandUsingText);
                     break;
                 default:
                     var newCommand = new UserCommand
@@ -43,7 +43,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                         Data = GetData(text.Skip(4))
                     };
                     _db.SaveUserCommand(newCommand);
-                    _bot.SendText(message.Chat.Id, string.Format(Responses.UserCommandHandler_AddCommand_SuccesfullyAddedCommand, text[1]));
+                    _bot.SendText(message.Chat.Id, string.Format(Responses.AddCommandSuccesfullyAddedCommand, text[1]));
                     break;
             }
         }
@@ -59,7 +59,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     Execute(userCommand);
                     break;
             }
-            _bot.SendText(message.Chat.Id, Responses.UserCommandHandler_Execute_SuccessRunCommand);
+            _bot.SendText(message.Chat.Id, Responses.UserCommandSuccessRun);
             return true;
         }
 

@@ -61,6 +61,30 @@ namespace Spoofi.FreudBot.Logic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Good, from this time you can use {0} command.
+        /// </summary>
+        internal static string AddCommandSuccesfullyAddedCommand {
+            get {
+                return ResourceManager.GetString("AddCommandSuccesfullyAddedCommand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Using: 
+        ///
+        /// /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
+        ///
+        ///Example: /add /ping get http://test.site/api/site/get page|1
+        ///
+        ///Note: at the moment I can&apos;t return response of request..
+        /// </summary>
+        internal static string AddCommandUsingText {
+            get {
+                return ResourceManager.GetString("AddCommandUsingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to List of available commands (for you): /list
         ///
         ///Note: for using all of available commands, you must be in a list of allowed users.
@@ -89,18 +113,18 @@ namespace Spoofi.FreudBot.Logic {
         ///   Looks up a localized string similar to Available commands:
         ///{0}.
         /// </summary>
-        internal static string MessageHandler_HandleCommand_list {
+        internal static string ListText {
             get {
-                return ResourceManager.GetString("MessageHandler_HandleCommand_list", resourceCulture);
+                return ResourceManager.GetString("ListText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to At the moment I don&apos;t have settings. I think my developer will add them soon..
         /// </summary>
-        internal static string MessageHandler_HandleCommand_settings {
+        internal static string SettingsText {
             get {
-                return ResourceManager.GetString("MessageHandler_HandleCommand_settings", resourceCulture);
+                return ResourceManager.GetString("SettingsText", resourceCulture);
             }
         }
         
@@ -108,9 +132,9 @@ namespace Spoofi.FreudBot.Logic {
         ///   Looks up a localized string similar to Hi!
         ///Brief information about me you can see by using command /help.
         /// </summary>
-        internal static string MessageHandler_HandleCommand_start {
+        internal static string StartText {
             get {
-                return ResourceManager.GetString("MessageHandler_HandleCommand_start", resourceCulture);
+                return ResourceManager.GetString("StartText", resourceCulture);
             }
         }
         
@@ -118,42 +142,18 @@ namespace Spoofi.FreudBot.Logic {
         ///   Looks up a localized string similar to Sorry, but I don&apos;t know this command :(
         ///Use /list to see list of available commands..
         /// </summary>
-        internal static string MessageHandler_HandleCommand_unknown_command {
+        internal static string UnknownCommandText {
             get {
-                return ResourceManager.GetString("MessageHandler_HandleCommand_unknown_command", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Good, from this time you can use {0} command.
-        /// </summary>
-        internal static string UserCommandHandler_AddCommand_SuccesfullyAddedCommand {
-            get {
-                return ResourceManager.GetString("UserCommandHandler_AddCommand_SuccesfullyAddedCommand", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Using: 
-        ///
-        /// /add /commandName [post|get] url ParamName_1|ParamValue_1 ParamName_2|ParamValue_2
-        ///
-        ///Example: /add /ping get http://test.site/api/site/get page|1
-        ///
-        ///Note: at the moment I can&apos;t return response of request..
-        /// </summary>
-        internal static string UserCommandHandler_AddCommand_UsingText {
-            get {
-                return ResourceManager.GetString("UserCommandHandler_AddCommand_UsingText", resourceCulture);
+                return ResourceManager.GetString("UnknownCommandText", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Ok, you command successfully running :).
         /// </summary>
-        internal static string UserCommandHandler_Execute_SuccessRunCommand {
+        internal static string UserCommandSuccessRun {
             get {
-                return ResourceManager.GetString("UserCommandHandler_Execute_SuccessRunCommand", resourceCulture);
+                return ResourceManager.GetString("UserCommandSuccessRun", resourceCulture);
             }
         }
     }
