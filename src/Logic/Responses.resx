@@ -187,4 +187,20 @@ GitHub: https://github.com/spoofi/FreudBot</value>
   <data name="DisallowUserCommandMessageToUser" xml:space="preserve">
     <value>Oops, you are was deleted from my allowed list :(</value>
   </data>
+  <data name="WolCommandUsageText" xml:space="preserve">
+    <value>Usage:
+/wol [ip address|hostname] [mac address] [port]
+[port] is not a required parameter. By default I use 7.
+Example:
+/wol my.home.site 01:02:03:04:05:06 7</value>
+  </data>
+  <data name="WolCommandIncorrectMac" xml:space="preserve">
+    <value>You have entered incorrect MAC address. Check it and try again</value>
+  </data>
+  <data name="WolCommandSuccessExecuteText" xml:space="preserve">
+    <value>Good news! Magic packet sent!</value>
+  </data>
+  <data name="WolCommandFailExecuteText" xml:space="preserve">
+    <value>Oops, something went wrong and I failed to send packet :(</value>
+  </data>
 </root>

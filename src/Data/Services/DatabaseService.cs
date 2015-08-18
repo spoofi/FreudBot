@@ -11,7 +11,7 @@ using TelegramUser = Telegram.Bot.Types.User;
 
 namespace Spoofi.FreudBot.Data.Services
 {
-    public class DatabaseService : IDatabaseService
+    public class DatabaseService : IDatabaseService // TODO Refactor this class
     {
         private readonly IRepositoryFactory _repositoryFactory;
         private readonly MongoRepository<User> _userRepository;

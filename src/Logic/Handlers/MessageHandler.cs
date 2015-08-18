@@ -63,6 +63,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case "/settings": strategy = new SettingsCommand(_bot.Value); break;
                 case "/add": strategy = new AddCommand(_bot.Value, _db.Value); break;
                 case "/list": strategy = new ListCommand(_bot.Value, _db.Value, _permissionChecker.Value); break;
+                case "/wol": strategy = new WolCommand(_bot.Value); break;
                 default:
                     if (Config.BotAdmins.Contains(message.Chat.Id) && Config.AdminCommands.Contains(command))
                     {

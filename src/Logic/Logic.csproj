@@ -78,6 +78,7 @@
     <Compile Include="Bot\Bot.cs" />
     <Compile Include="Bot\BotManager.cs" />
     <Compile Include="Bot\Config.cs" />
+    <Compile Include="Handlers\Commands\WolCommand.cs" />
     <Compile Include="Handlers\Commands\Admin\DisallowUserCommand.cs" />
     <Compile Include="Handlers\Commands\Admin\AllowUserCommand.cs" />
     <Compile Include="Handlers\Commands\Admin\AdminCommand.cs" />
@@ -102,6 +103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Responses.resx</DependentUpon>
     </Compile>
+    <Compile Include="Utils\WakeOnLan.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

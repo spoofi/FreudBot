@@ -231,5 +231,45 @@ namespace Spoofi.FreudBot.Logic {
                 return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Oops, something went wrong and I failed to send packet :(.
+        /// </summary>
+        internal static string WolCommandFailExecuteText {
+            get {
+                return ResourceManager.GetString("WolCommandFailExecuteText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You have entered incorrect MAC address. Check it and try again.
+        /// </summary>
+        internal static string WolCommandIncorrectMac {
+            get {
+                return ResourceManager.GetString("WolCommandIncorrectMac", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Good news! Magic packet sent!.
+        /// </summary>
+        internal static string WolCommandSuccessExecuteText {
+            get {
+                return ResourceManager.GetString("WolCommandSuccessExecuteText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage:
+        ////wol [ip address|hostname] [mac address] [port]
+        ///[port] is not a required parameter. By default I use 7.
+        ///Example:
+        ////wol my.home.site 01:02:03:04:05:06 7.
+        /// </summary>
+        internal static string WolCommandUsageText {
+            get {
+                return ResourceManager.GetString("WolCommandUsageText", resourceCulture);
+            }
+        }
     }
 }
