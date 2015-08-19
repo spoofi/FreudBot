@@ -24,7 +24,7 @@ namespace Spoofi.FreudBot.Logic.Handlers.Commands
             var commands = Config.BasicCommands.ToList();
             var userCommands = _db.GetCommandsByChat(message.Chat.Id).Select(x => x.Command).ToList();
             if (_permissionChecker.Check(message.Chat.Id))
-                userCommands.InsertRange(0, new[] {"/add", "/wol"}); // TODO extract to Config.AllowedUsersCommands
+                userCommands.InsertRange(0, Config.UserCommands);
             commands.AddRange(userCommands);
             _bot.SendText(message.Chat.Id, string.Format(Responses.ListText, string.Join("\r\n", commands)));
         }
