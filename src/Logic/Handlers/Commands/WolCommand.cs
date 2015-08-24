@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Interfaces;
 using Spoofi.FreudBot.Logic.Utils;
 using Telegram.Bot.Types;
@@ -11,7 +10,6 @@ namespace Spoofi.FreudBot.Logic.Handlers.Commands
     public class WolCommand : ICommandStrategy
     {
         private readonly IBotManager _bot;
-        private readonly IDatabaseService _db;
 
         public WolCommand(IBotManager bot)
         {
