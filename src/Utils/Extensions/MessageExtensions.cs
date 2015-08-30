@@ -17,7 +17,7 @@ namespace Spoofi.FreudBot.Utils.Extensions
 
         public static string GetCommand(this Message message)
         {
-            return message.Text.Split(' ').First();
+            return message.IsCommand() ? message.Text.Split(' ').FirstOrDefault() : null;
         }
     }
 }
