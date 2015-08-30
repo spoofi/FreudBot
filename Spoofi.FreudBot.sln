@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utils", "Utils", "{37E7B330
 		utils\pingbot.sh = utils\pingbot.sh
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{97D67179-6EBF-4F61-A25B-02673E0C9F48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utils.Tests", "src\Tests\Utils.Tests\Utils.Tests.csproj", "{1925F77B-67AA-4353-9DC1-ADF7C89CDB07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,11 +47,16 @@ Global
 		{4A8AFF19-35D4-428A-9470-A4652D5CF08C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A8AFF19-35D4-428A-9470-A4652D5CF08C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A8AFF19-35D4-428A-9470-A4652D5CF08C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1925F77B-67AA-4353-9DC1-ADF7C89CDB07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1925F77B-67AA-4353-9DC1-ADF7C89CDB07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1925F77B-67AA-4353-9DC1-ADF7C89CDB07}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1925F77B-67AA-4353-9DC1-ADF7C89CDB07}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{37E7B330-F7BF-47AD-A0E0-2230BAD4D12A} = {E70F78E2-1609-4FF0-AA30-AD149CA6FB4F}
+		{1925F77B-67AA-4353-9DC1-ADF7C89CDB07} = {97D67179-6EBF-4F61-A25B-02673E0C9F48}
 	EndGlobalSection
 EndGlobal
