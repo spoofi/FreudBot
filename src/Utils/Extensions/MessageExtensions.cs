@@ -19,5 +19,10 @@ namespace Spoofi.FreudBot.Utils.Extensions
         {
             return message.IsCommand() ? message.Text.Split(' ').FirstOrDefault() : null;
         }
+
+        public static string[] GetCommandParams(this Message message)
+        {
+            return message.IsCommand() ? message.Text.Split(' ').Skip(1).ToArray() : new string[0];
+        }
     }
 }

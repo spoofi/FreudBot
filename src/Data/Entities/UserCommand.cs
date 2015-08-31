@@ -18,5 +18,7 @@ namespace Spoofi.FreudBot.Data.Entities
         public string Url { get; set; }
 
         public Dictionary<string, string> Data { get; set; }
+
+        public string AliasCommand { get; set; }
     }
 }

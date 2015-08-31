@@ -4,6 +4,7 @@
     {
         PostRequest,
         GetRequest,
-        Say
+        Say,
+        Alias
     }
 }

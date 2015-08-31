@@ -63,7 +63,6 @@ namespace Spoofi.FreudBot.Logic.Handlers
                 case "/settings": strategy = new SettingsCommand(_bot.Value); break;
                 case "/add": strategy = new AddCommand(_bot.Value, _db.Value); break;
                 case "/list": strategy = new ListCommand(_bot.Value, _db.Value, _permissionChecker.Value); break;
-                case "/wol": strategy = new WolCommand(_bot.Value); break;
                 default:
                     if (Config.BotAdmins.Contains(message.Chat.Id) && Config.AdminCommands.Contains(command))
                     {
@@ -72,6 +71,16 @@ namespace Spoofi.FreudBot.Logic.Handlers
                             case "/admin": strategy = new AdminCommand(_bot.Value); break;
                             case "/allowuser": strategy = new AllowUserCommand(_bot.Value, _db); break;
                             case "/disallowuser": strategy = new DisallowUserCommand(_bot.Value, _db); break;
+                        }
+                        break;
+                    }
+
+                    if (_permissionChecker.Value.Check(message.Chat.Id))
+                    {
+                        switch (command)
+                        {
+                            case "/wol": strategy = new WolCommand(_bot.Value); break;
+                            case "/alias": strategy = new AliasCommand(_db.Value, _bot.Value); break;
                         }
                         break;
                     }

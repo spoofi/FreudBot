@@ -78,6 +78,7 @@
     <Compile Include="Bot\Bot.cs" />
     <Compile Include="Bot\BotManager.cs" />
     <Compile Include="Bot\Config.cs" />
+    <Compile Include="Handlers\Commands\AliasCommand.cs" />
     <Compile Include="Handlers\Commands\WolCommand.cs" />
     <Compile Include="Handlers\Commands\Admin\DisallowUserCommand.cs" />
     <Compile Include="Handlers\Commands\Admin\AllowUserCommand.cs" />

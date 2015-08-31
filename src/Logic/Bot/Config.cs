@@ -43,7 +43,8 @@ namespace Spoofi.FreudBot.Logic.Bot
         public static string[] UserCommands =
         {
             "/add",
-            "/wol"
+            "/wol",
+            "/alias"
         };
 
         public static string[] AdminCommands =

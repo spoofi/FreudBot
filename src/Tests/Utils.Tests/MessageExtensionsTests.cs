@@ -7,7 +7,7 @@ namespace Spoofi.FreudBot.Utils.Tests
     public class MessageExtensionsTests
     {
         private readonly Message _textMessage = new Message {Text = "string1 string2"};
-        private readonly Message _commandMessage = new Message {Text = "/cmd 1 2"};
+        private readonly Message _commandMessage = new Message {Text = "/cmd 0 1 2"};
 
         [Fact]
         public void IsTextTest()
@@ -28,6 +28,16 @@ namespace Spoofi.FreudBot.Utils.Tests
         {
             Assert.Equal(_commandMessage.GetCommand(), "/cmd");
             Assert.Equal(_textMessage.GetCommand(), null);
+        }
+
+        [Fact]
+        public void GetCommandParamsTest()
+        {
+            Assert.Equal(_textMessage.GetCommandParams().Length, 0);
+            var parameters = _commandMessage.GetCommandParams();
+            Assert.Equal(parameters.Length, 3);
+            for (var i = 0; i < 3; i++)
+                Assert.Equal(parameters[i], i.ToString());
         }
     }
 }
