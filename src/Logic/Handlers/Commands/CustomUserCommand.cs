@@ -25,13 +25,16 @@ namespace Spoofi.FreudBot.Logic.Handlers.Commands
             {
                 case UserCommandType.PostRequest:
                 case UserCommandType.GetRequest:
-                    ExecuteCommand(userCommand);
+                    ExecuteRequestCommand(userCommand);
                     break;
+                case UserCommandType.Alias:
+                    _bot.SendText(message.Chat.Id, "test");
+                    return;
             }
             _bot.SendText(message.Chat.Id, Responses.UserCommandSuccessRun);
         }
 
-        private static void ExecuteCommand(UserCommand userCommand)
+        private static void ExecuteRequestCommand(UserCommand userCommand)
         {
             var request = new RestRequest
             {

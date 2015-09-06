@@ -82,7 +82,6 @@ namespace Spoofi.FreudBot.Logic.Handlers
                             case "/wol": strategy = new WolCommand(_bot.Value); break;
                             case "/alias": strategy = new AliasCommand(_db.Value, _bot.Value, _commandHelper.Value); break;
                         }
-                        break;
                     }
 
                     if (_db.Value.GetCommandByChat(message.Chat.Id, message.Text) != null)
