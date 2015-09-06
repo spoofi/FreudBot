@@ -95,6 +95,36 @@ namespace Spoofi.FreudBot.Logic {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Excellent, alias saved!.
+        /// </summary>
+        internal static string AliasCommand_AliasSaved {
+            get {
+                return ResourceManager.GetString("AliasCommand_AliasSaved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Usage:
+        ////alias add /alias1 /command param1 param2
+        ////alias list - show yours aliases
+        ////alias del /alias1 - removes alias1.
+        /// </summary>
+        internal static string AliasCommand_Usage {
+            get {
+                return ResourceManager.GetString("AliasCommand_Usage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Command &apos;{0}&apos; not found..
+        /// </summary>
+        internal static string AliasCommand_ValidateAdd_CommandNotFound {
+            get {
+                return ResourceManager.GetString("AliasCommand_ValidateAdd_CommandNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Congratulations! You was added to my allowed users list..
         /// </summary>
         internal static string AllowUserCommandCongratulation {

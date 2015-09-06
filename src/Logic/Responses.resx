@@ -203,4 +203,16 @@ Example:
   <data name="WolCommandFailExecuteText" xml:space="preserve">
     <value>Oops, something went wrong and I failed to send packet :(</value>
   </data>
+  <data name="AliasCommand_Usage" xml:space="preserve">
+    <value>Usage:
+/alias add /alias1 /command param1 param2
+/alias list - show yours aliases
+/alias del /alias1 - removes alias1</value>
+  </data>
+  <data name="AliasCommand_AliasSaved" xml:space="preserve">
+    <value>Excellent, alias saved!</value>
+  </data>
+  <data name="AliasCommand_ValidateAdd_CommandNotFound" xml:space="preserve">
+    <value>Command '{0}' not found.</value>
+  </data>
 </root>

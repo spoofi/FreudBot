@@ -14,13 +14,13 @@ namespace Spoofi.FreudBot.Logic.Handlers
     {
         private readonly Lazy<IBotManager> _bot;
         private readonly Lazy<IDatabaseService> _db;
-        private readonly Lazy<IPermissionChecker> _permissionChecker;
+        private readonly Lazy<ICommandHelper> _commandHelper;
 
-        public MessageHandler(Lazy<IDatabaseService> databaseService, Lazy<IBotManager> botManager, Lazy<IPermissionChecker> permissionChecker)
+        public MessageHandler(Lazy<IDatabaseService> databaseService, Lazy<IBotManager> botManager, Lazy<ICommandHelper> commandHelper)
         {
             _bot = botManager;
             _db = databaseService;
-            _permissionChecker = permissionChecker;
+            _commandHelper = commandHelper;
         }
 
         public void Handle(Message message)
@@ -33,7 +33,7 @@ namespace Spoofi.FreudBot.Logic.Handlers
                     return;
                 }
 
-                if (!_permissionChecker.Value.Check(message.Chat.Id)) return;
+                if (!_commandHelper.Value.CheckPermission(message.Chat.Id)) return;
 
                 if (message.IsText())
                     HandleText(message);
@@ -59,10 +59,10 @@ namespace Spoofi.FreudBot.Logic.Handlers
             switch (command)
             {
                 case "/start": strategy = new StartCommand(_db.Value, _bot.Value); break;
-                case "/help": strategy = new HelpCommand(_permissionChecker.Value, _bot.Value); break;
+                case "/help": strategy = new HelpCommand(_commandHelper.Value, _bot.Value); break;
                 case "/settings": strategy = new SettingsCommand(_bot.Value); break;
                 case "/add": strategy = new AddCommand(_bot.Value, _db.Value); break;
-                case "/list": strategy = new ListCommand(_bot.Value, _db.Value, _permissionChecker.Value); break;
+                case "/list": strategy = new ListCommand(_bot.Value, _db.Value, _commandHelper.Value); break;
                 default:
                     if (Config.BotAdmins.Contains(message.Chat.Id) && Config.AdminCommands.Contains(command))
                     {
@@ -75,12 +75,12 @@ namespace Spoofi.FreudBot.Logic.Handlers
                         break;
                     }
 
-                    if (_permissionChecker.Value.Check(message.Chat.Id))
+                    if (_commandHelper.Value.CheckPermission(message.Chat.Id))
                     {
                         switch (command)
                         {
                             case "/wol": strategy = new WolCommand(_bot.Value); break;
-                            case "/alias": strategy = new AliasCommand(_db.Value, _bot.Value); break;
+                            case "/alias": strategy = new AliasCommand(_db.Value, _bot.Value, _commandHelper.Value); break;
                         }
                         break;
                     }

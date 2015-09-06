@@ -5,18 +5,18 @@ namespace Spoofi.FreudBot.Logic.Handlers.Commands
 {
     public class HelpCommand : ICommandStrategy
     {
-        private readonly IPermissionChecker _permissionChecker;
+        private readonly ICommandHelper _commandHelper;
         private readonly IBotManager _bot;
 
-        public HelpCommand(IPermissionChecker permissionChecker, IBotManager bot)
+        public HelpCommand(ICommandHelper commandHelper, IBotManager bot)
         {
-            _permissionChecker = permissionChecker;
+            _commandHelper = commandHelper;
             _bot = bot;
         }
 
         public void Execute(Message message)
         {
-            _bot.SendText(message.Chat.Id, _permissionChecker.Check(message.Chat.Id) ? Responses.HelpTextForAllowed : string.Format(Responses.HelpText, message.Chat.Id));
+            _bot.SendText(message.Chat.Id, _commandHelper.CheckPermission(message.Chat.Id) ? Responses.HelpTextForAllowed : string.Format(Responses.HelpText, message.Chat.Id));
         }
     }
 }

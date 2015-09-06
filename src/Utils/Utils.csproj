@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="DependenciesResolver.cs" />
     <Compile Include="Extensions\MessageExtensions.cs" />
+    <Compile Include="Extensions\EnumerableExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

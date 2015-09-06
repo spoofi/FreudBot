@@ -84,8 +84,8 @@
     <Compile Include="Handlers\Commands\Admin\AllowUserCommand.cs" />
     <Compile Include="Handlers\Commands\Admin\AdminCommand.cs" />
     <Compile Include="Interfaces\IBotManager.cs" />
-    <Compile Include="Interfaces\IPermissionChecker.cs" />
-    <Compile Include="Bot\PermissionChecker.cs" />
+    <Compile Include="Interfaces\ICommandHelper.cs" />
+    <Compile Include="Bot\CommandHelper.cs" />
     <Compile Include="Handlers\CommandContext.cs" />
     <Compile Include="Handlers\Commands\CustomUserCommand.cs" />
     <Compile Include="Handlers\Commands\HelpCommand.cs" />

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-using Spoofi.FreudBot.Data.Services;
-using Spoofi.FreudBot.Logic.Bot;
+﻿using Spoofi.FreudBot.Data.Services;
 using Spoofi.FreudBot.Logic.Interfaces;
 using Telegram.Bot.Types;
 
@@ -10,22 +8,18 @@ namespace Spoofi.FreudBot.Logic.Handlers.Commands
     {
         private readonly IBotManager _bot;
         private readonly IDatabaseService _db;
-        private readonly IPermissionChecker _permissionChecker;
+        private readonly ICommandHelper _commandHelper;
 
-        public ListCommand(IBotManager bot, IDatabaseService db, IPermissionChecker permissionChecker)
+        public ListCommand(IBotManager bot, IDatabaseService db, ICommandHelper commandHelper)
         {
             _bot = bot;
             _db = db;
-            _permissionChecker = permissionChecker;
+            _commandHelper = commandHelper;
         }
 
         public void Execute(Message message)
         {
-            var commands = Config.BasicCommands.ToList();
-            var userCommands = _db.GetCommandsByChat(message.Chat.Id).Select(x => x.Command).ToList();
-            if (_permissionChecker.Check(message.Chat.Id))
-                userCommands.InsertRange(0, Config.UserCommands);
-            commands.AddRange(userCommands);
+            var commands = _commandHelper.GetCommandsByChat(message.Chat.Id);
             _bot.SendText(message.Chat.Id, string.Format(Responses.ListText, string.Join("\r\n", commands)));
         }
     }
